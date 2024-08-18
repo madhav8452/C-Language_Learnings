@@ -1,16 +1,5 @@
 #include<stdio.h>
 
-void odd(int size, int box[size])
-{
-    for(int i = 0; i < size; i++)
-    {
-        if(box[i] % 2 == 1)
-        {
-            printf("%d\n", box[i]);
-        }
-    }
-}
-
 int main()
 {
     int size;
@@ -19,14 +8,21 @@ int main()
     scanf("%d", &size);
 
     int box[size];
+    int *ptr = box;
 
     for(int i = 0; i < size; i++)
     {
         printf("Enter value of an array %d: ", i);
-        scanf("%d", &box[i]);
+        scanf("%d", ptr + i);
     }
 
-    odd(size, box);
+    for(int i = 0; i < size; i++)
+    {
+        if(*(ptr + i) % 2 == 0)
+        {
+            printf("%d\n", *(ptr + i));
+        }
+    }
 
     return 0;
 }
